@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.8.RELEASE</version>
+		<version>2.6.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hunter</groupId>
@@ -17,8 +17,6 @@
 	<packaging>war</packaging>
 	<properties>
 		<java.version>1.8</java.version>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -66,14 +64,19 @@
 			<artifactId>h2</artifactId>
 			<!--<scope>runtime</scope> -->
 		</dependency>
-	
-
 
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
-			<version>12.2.0.1</version>
+			<artifactId>ojdbc8</artifactId> <!-- or ojdbc11 for JDK 11+ -->
+			<version>19.8.0.0</version>
 		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>com.oracle.database.jdbc</groupId>-->
+<!--			<artifactId>ojdbc8</artifactId>-->
+<!--			<version>12.2.0.1</version>-->
+<!--		</dependency>-->
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -142,13 +145,13 @@
 			<artifactId>xmldocument</artifactId>
 			<version>0.1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.common</groupId>
 			<artifactId>google-collect</artifactId>
 			<scope>system</scope>
 			<version>0.5</version>
-			 <systemPath>${basedir}\src\lib\google-collections-1.0-rc2.jar</systemPath>
+			<systemPath>${basedir}\src\lib\google-collections-1.0-rc2.jar</systemPath>
 		</dependency>
 
 	</dependencies>
@@ -161,5 +164,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>
