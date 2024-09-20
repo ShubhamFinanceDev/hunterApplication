@@ -81,7 +81,9 @@ public class Email implements Runnable {
 				counter++;
 			}
 			message.setRecipients(Message.RecipientType.TO, recipientAddress);
-			message.setRecipients(Message.RecipientType.BCC, "vijay.uniyal@shubham.co");
+//			message.setRecipients(Message.RecipientType.BCC, "vijay.uniyal@shubham.co");
+//			message.setRecipients(Message.RecipientType.BCC, "apps.development@shubham.co");
+
 
 			message.setSubject(email_subject);
 			if (filename == null) {
@@ -97,6 +99,7 @@ public class Email implements Runnable {
 				if (filename != null) {
 					MimeBodyPart messageBodyPart2 = new MimeBodyPart();
 					File file = new File(filename);
+					System.out.println("file path"+ filename);
 					if(file.exists())
 					{
 						DataSource source = new FileDataSource(file);
@@ -104,6 +107,10 @@ public class Email implements Runnable {
 						messageBodyPart2.setFileName(filename);
 						multipart.addBodyPart(messageBodyPart2);
 					}
+					else {
+						logger.info("File not found {}", filename);
+					}
+
 					MimeBodyPart messageBodyPart3 = new MimeBodyPart();
 					File filexls = new File(filename.replace(".xml", ".xlsx"));
 					if(filexls.exists()) {
@@ -112,7 +119,10 @@ public class Email implements Runnable {
 						messageBodyPart3.setFileName(filename.replace(".xml", ".xlsx"));
 						multipart.addBodyPart(messageBodyPart3);
 					}
-					
+					else {
+						logger.info("Fil does not exist xml and xlsx {}", filename);
+					}
+
 				}
 
 				// 6) set the multiplart object to the message object
